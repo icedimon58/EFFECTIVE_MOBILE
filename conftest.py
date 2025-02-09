@@ -1,18 +1,13 @@
-
 import pytest
 from selenium import webdriver
 from data import PAGE_URL
 
 
-@pytest.fixture(scope="session")
-def page_driver():
+@pytest.fixture()
+def page_driver(request):
     options = webdriver.ChromeOptions()
-    # options.add_argument('window-size=1920,1080')
-    options.add_argument('--headless=new')
-    # options.add_argument('no-sandbox')
-    # options.add_argument('--disable-gpu')
+    options.add_argument('window-size={},1080'.format(request.param))
     driver = webdriver.Chrome(options=options)
     driver.get(PAGE_URL)
     yield driver
     driver.quit()
-
