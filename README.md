@@ -27,3 +27,6 @@
 ## Просмотр отчета:
 
 `allure  serve  .\allure_results\`
+
+## Запуск контейнера с копированием результата в allure-results:
+`docker run --rm -v C:\path_to_folder\allure-results:/app/allure-results effective_mobile
